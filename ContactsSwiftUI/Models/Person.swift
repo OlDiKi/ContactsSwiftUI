@@ -7,9 +7,8 @@
 
 import Foundation
 
-class Person: Identifiable {
+struct Person {
     
-    let id = UUID()
     let name: String
     let surname: String
     let email: String
@@ -17,13 +16,6 @@ class Person: Identifiable {
     
     var fullname: String {
         "\(name) \(surname)"
-    }
-    
-    init(name: String, surname: String, email: String, phone: String) {
-        self.name = name
-        self.surname = surname
-        self.email = email
-        self.phone = phone
     }
 }
 
@@ -38,9 +30,7 @@ extension Person {
         let emails = DataManager.shared.emails.shuffled()
         let phones = DataManager.shared.phones.shuffled()
         
-        let iterationCount = min(names.count, surnames.count, emails.count, phones.count)
-        
-        for index in 0..<iterationCount {
+        for index in 0..<names.count {
             
             let person = Person(
                 name: names[index],
