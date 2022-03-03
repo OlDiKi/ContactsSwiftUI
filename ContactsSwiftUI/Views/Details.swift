@@ -13,15 +13,11 @@ struct Details: View {
     
     var body: some View {
         List {
-            Image(systemName: "person.fill")
-                .resizable()
-                .frame(width: 130, height: 130)
-                .cornerRadius(15)
+            ImageView(image: "person.fill")
             DetailRow(content: person.phone, logo: "phone")
             DetailRow(content: person.email, logo: "tray")
-                
-            
         }
+        .navigationTitle(person.fullname)
     }
 }
 

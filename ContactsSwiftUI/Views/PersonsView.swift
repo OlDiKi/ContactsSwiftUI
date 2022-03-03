@@ -7,22 +7,24 @@
 
 import SwiftUI
 
-struct Contacts: View {
+struct PersonsView: View {
     
     let contacts: [Person]
     
     var body: some View {
-        List(contacts, id: \.name) { contact in
-            NavigationLink(contact.fullname,
+        NavigationView {
+            List(contacts, id: \.name) { person in
+                NavigationLink(person.fullname,
                            destination:
-                            Details(person: contact))
+                            Details(person: person))
         }
         .navigationTitle("Contact list")
         }
     }
+}
 
 struct Contacts_Previews: PreviewProvider {
     static var previews: some View {
-        Contacts(contacts: Person.getPersons())
+        PersonsView(contacts: Person.getPersons())
     }
 }
